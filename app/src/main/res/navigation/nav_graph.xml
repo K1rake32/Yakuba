@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/mainRegisterFragment"
+        android:name="com.example.yakuba.UI.UI.Auth.MainRegisterFragment"
+        android:label="fragment_main_register"
+        tools:layout="@layout/fragment_main_register" >
+        <action
+            android:id="@+id/action_mainRegisterFragment_to_nubmerConfirmationFragment"
+            app:destination="@id/nubmerConfirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nubmerConfirmationFragment"
+        android:name="com.example.yakuba.UI.UI.Auth.NubmerConfirmationFragment"
+        android:label="fragment_nubmer_confirmation"
+        tools:layout="@layout/fragment_nubmer_confirmation" >
+        <action
+            android:id="@+id/action_nubmerConfirmationFragment_to_mainRegisterFragment"
+            app:destination="@id/mainRegisterFragment" />
+        <action
+            android:id="@+id/action_nubmerConfirmationFragment_to_userInformationFragment"
+            app:destination="@id/userInformationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userInformationFragment"
+        android:name="com.example.yakuba.UI.UI.Auth.UserInformationFragment"
+        android:label="fragment_user_information"
+        tools:layout="@layout/fragment_user_information" >
+        <action
+            android:id="@+id/action_userInformationFragment_to_nubmerConfirmationFragment"
+            app:destination="@id/nubmerConfirmationFragment" />
+        <action
+            android:id="@+id/action_userInformationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.yakuba.UI.UI.Main.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentDetails"
+            app:destination="@id/fragmentDetails" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.yakuba.UI.UI.Main.ShopFragment"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_shopFragment_to_userInformationFragment"
+            app:destination="@id/userInformationFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.yakuba.UI.UI.Main.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_galleryFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_galleryFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.yakuba.UI.UI.Main.profile.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_userEditFragment"
+            app:destination="@id/userEditFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_mainRegisterFragment"
+            app:destination="@id/mainRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.example.yakuba.UI.UI.Main.home.FragmentDetails"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/userEditFragment"
+        android:name="com.example.yakuba.UI.UI.Main.profile.UserEditFragment"
+        android:label="fragment_user_edit"
+        tools:layout="@layout/fragment_user_edit" >
+        <action
+            android:id="@+id/action_userEditFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_userEditFragment_to_mainRegisterFragment"
+            app:destination="@id/mainRegisterFragment" />
+    </fragment>
+
+</navigation>

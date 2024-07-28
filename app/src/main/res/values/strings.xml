@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Якуба</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lenc_sogl">Нажимая кнопку “Продолжить”, Вы\nпринимаете<font color="red"> условия пользовательского\nсоглашения</font> и <font color="red">политику обработки\nперсональных данных</font></string>
+    <string name="number_confirmation">Для подтверждения\nна номер +7(960)160-60-60 поступит\nзвонок, введите последние 4 цифры.</string>
+    <string name="reg_end">Для завершения регистрации заполните\nинформацию о себе.</string>
+    <string name="kak">Как руководителю влиться в новый коллектив: 4 этапа вхождения</string>
+    <string name="under_title">Вхождение в новый коллектив – процесс непростой, он требует от руководите...</string>
+    <string name="next_text"><u>Читать далее</u></string>
+    <string name="kak_details">Как руководителю влиться в\nновый коллектив: 4 этапа\nвхождения</string>
+    <string name="details_1">Вхождение в новый коллектив – процесс\nнепростой, он требует от руководителя\nопределенных знаний и усилий.</string>
+    <string name="details_2">Сегодня я расскажу вам о двух вещах:\nчто сказать при первом выходе на работу,\nи как в 4 этапа войти в коллектив.</string>
+    <string name="details_3">Как представиться при первом выходе на\nработу?</string>
+    <string name="details_4">Поэтому позаботьтесь о внешнем виде и\nпродумайте, что скажете коллегам. Для\nвас главное – задать дружественный тон\nи показать, что вы нацелены работать\nради общей цели.</string>
+    <string name="details_5">Познакомиться с коллективом можно так.\nПросто публично скажите: «Здравствуйте,\nколлеги, мне очень приятно видеть вас\nвсех. Вы со мной не знакомы, меня зовут\nЕвгений Олегович, я буду работать на\nдолжности руководителя отдела продаж.\nМое рабочее место здесь, если будут\nвозникать какие-то вопросы, буду рад на\nних ответить. На краю рабочего стола я\nоставлю свои визитки, если кому нужно –\nберите».</string>
+    <string name="details_6">Для начала этого достаточно. В\nобеденный перерыв купите небольшой\nтортик и угостите коллег.</string>
+    <string name="userName1">Константин Василенко</string>
+    <string name="TimeUser1">5 минут назад</string>
+    <string name="descriptionUser1">Как всегда очень интересно и полезно!</string>
+    <string name="userName2">Валентина Бодрова</string>
+    <string name="TimeUser2">7 минут назад</string>
+    <string name="descriptionUser2">Обожаю читать подобные статьи, открываю\nдля себя постоянно что-то новое)</string>
+    <string name="userName3">Вероника Воронина</string>
+    <string name="TimeUser3">35 минут назад</string>
+    <string name="descriptionUser3">Очень информативно, большое спасибо!</string>
+    <string name="userNameInput">no name</string>
+    <string name="TimeUserInput">только что</string>
+    <string name="descriptionUserInput">opis</string>
+    <string name="leaveConfirmetion">Вы действительно хотите\nвыйти?</string>
+    <string name="leaveDescription">Для повторного входа Вам будет\nнеобходимо авторизоваться заново</string>
+    <string name="deleteProfile">Вы хотите удалить профиль?</string>
+    <string name="ne_izmenit">Это дейтсвие будет невозможно\nотменить</string>
+    <string name="data_time">17 марта 2022</string>
+    <string name="data_time2">16 марта 2022</string>
+    <string name="kak2">ТОП-4 правила интеллектуальной перезагрузки!</string>
+    <string name="under_title2">Вхождение в новый коллектив – процесс непростой, он требует от руководителя...</string>
+</resources>

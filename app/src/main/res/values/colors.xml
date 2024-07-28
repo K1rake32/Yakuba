@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name = "grey">#999EA9</color>
+    <color name = "grey_white">#E5E5E8</color>
+    <color name="red">#F23A45</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="super_grey">#F2F2F2CC</color>
+    <color name="pochti_black">#636467</color>
+    <color name = "red_error">#FFD8D6</color>
+    <color name = "pochti_white">#E4E8EE</color>
+    <color name="grey_for_coment">#F9F9FB</color>
+    <color name="grey_for_sent">#B1B7C5</color>
+</resources>

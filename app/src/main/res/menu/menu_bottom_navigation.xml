@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/home"
+    android:title="Главная"
+    app:showAsAction="always"
+    android:icon="@drawable/bn_home"/>
+    <item android:id="@+id/shop"
+        android:title="Магазин"
+        app:showAsAction="always"
+        android:icon="@drawable/bn_shop"/>
+    <item android:id="@+id/gal"
+        android:title="Галерея"
+        app:showAsAction="always"
+        android:icon="@drawable/bn_gal"/>
+    <item android:id="@+id/user"
+        android:title="Профиль"
+        app:showAsAction="always"
+        android:icon="@drawable/bn_user"/>
+</menu>
