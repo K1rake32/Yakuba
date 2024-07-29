@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.mainRegisterFragment,
                 R.id.nubmerConfirmationFragment,
                 R.id.fragmentDetails,
+                R.id.addPostPhotoFragment,
                 R.id.userEditFragment,
                 R.id.userInformationFragment -> bottomNavigationView.visibility = View.GONE
                 else -> bottomNavigationView.visibility = View.VISIBLE

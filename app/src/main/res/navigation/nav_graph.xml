@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_homeFragment_to_fragmentDetails"
             app:destination="@id/fragmentDetails" />
+        <action
+            android:id="@+id/action_homeFragment_to_addPostPhotoFragment"
+            app:destination="@id/addPostPhotoFragment" />
     </fragment>
 
     <fragment
@@ -126,6 +129,15 @@
         <action
             android:id="@+id/action_userEditFragment_to_mainRegisterFragment"
             app:destination="@id/mainRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPostPhotoFragment"
+        android:name="com.example.yakuba.UI.UI.Main.home.AddPostPhotoFragment"
+        android:label="fragment_add_post_photo"
+        tools:layout="@layout/fragment_add_post_photo" >
+        <action
+            android:id="@+id/action_addPostPhotoFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
 </navigation>

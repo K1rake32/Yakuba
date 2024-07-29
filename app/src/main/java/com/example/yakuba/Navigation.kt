@@ -35,4 +35,8 @@ object NavigationFragment {
     fun NavigationUserDelete2(navController: NavController) {
         navController.navigate(R.id.action_userEditFragment_to_mainRegisterFragment)
     }
+
+    fun NavigationCreatePost(navController: NavController) {
+        navController.navigate(R.id.action_homeFragment_to_addPostPhotoFragment)
+    }
 }

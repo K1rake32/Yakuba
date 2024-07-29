@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         rcPost()
+        createPost()
     }
 
     private fun rcPost() {
@@ -53,7 +54,12 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-
+    private fun createPost() {
+        with(binding) {
+            addPost.setOnClickListener() {
+                NavigationFragment.NavigationCreatePost(MAIN.navController)
+            }
+        }
+    }
 }
 

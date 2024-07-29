@@ -1,20 +1,53 @@
 package com.example.yakuba.UI.UI.Main.home
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import com.example.yakuba.R
-import com.example.yakuba.UI.UI.Auth.UserInformationFragment
+import androidx.fragment.app.Fragment
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yakuba.Recycle.App
+import com.example.yakuba.Recycle.addPost.AddPost
+import com.example.yakuba.Recycle.addPost.AddPostAdapter
+import com.example.yakuba.Recycle.addPost.AddPostRecycle
 import com.example.yakuba.databinding.FragmentAddPostPhotoBinding
-import com.example.yakuba.databinding.FragmentGalleryBinding
 
 class AddPostPhotoFragment : Fragment() {
 
     private lateinit var binding: FragmentAddPostPhotoBinding
+    private lateinit var adapter: AddPostAdapter
+
+    private val addPostRecycle: AddPostRecycle
+        get() = (requireActivity().application as App).addPostService
+
+    private val selectImagesLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            val selectedPosts = mutableListOf<AddPost>()
+
+            data?.let {
+                val clipData = it.clipData
+                if (clipData != null) {
+                    for (i in 0 until clipData.itemCount) {
+                        val uri: Uri = clipData.getItemAt(i).uri
+                        selectedPosts.add(AddPost(uri.toString()))
+                    }
+                } else {
+                    val uri: Uri? = it.data
+                    uri?.let {
+                        selectedPosts.add(AddPost(it.toString()))
+                    }
+                }
+            }
+            adapter.addPosts(selectedPosts)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,21 +60,18 @@ class AddPostPhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        rcAddPost()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == UserInformationFragment.GALLERY_REQUEST_CODE && resultCode == AppCompatActivity.RESULT_OK && data != null ) {
-            val selectedImageUri= data.data
-            if(selectedImageUri != null ) {
-                if (selectedImageUri != null )
-                    binding.img.setImageResource(selectedImageUri)
-            }
+    private fun rcAddPost() {
+        val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        adapter = AddPostAdapter(selectImagesLauncher)
+        adapter.data = addPostRecycle.getAddPost()
+
+        with(binding) {
+            rcAddPost.layoutManager = manager
+            rcAddPost.adapter = adapter
         }
     }
-
-    companion object {
-        private const val GALLERY_REQUEST_CODE = 100
-    }
-
 }

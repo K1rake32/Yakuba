@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".UI.UI.Main.home.AddPostPhotoFragment">
 
@@ -64,10 +65,12 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rcAddPost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_add_post"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
@@ -80,10 +83,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="40dp"
+        android:inputType="text"
         android:hint="Название поста"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/rcAddPost" />
 
     <EditText
         android:id="@+id/editText2"
@@ -91,6 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:inputType="text"
         android:layout_marginTop="24dp"
         android:hint="Описание поста"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,6 +106,8 @@
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/materialCheckBox"
         android:layout_width="24dp"
+        android:buttonTint="@color/red"
+        style="@style/MyCheckBox"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
@@ -116,8 +123,5 @@
         android:text="Опубликовать в конкретное время"
         app:layout_constraintStart_toEndOf="@+id/materialCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
