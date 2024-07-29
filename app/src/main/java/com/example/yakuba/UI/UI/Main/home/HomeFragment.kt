@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
     private fun rcPost() {
         val manager = LinearLayoutManager(requireContext())
         adapter = PostAdapter()
-        adapter.data = postRecycle.getPersons()
+        adapter.data = postRecycle.getPost()
 
         with(binding) {
             rcPost.layoutManager = manager

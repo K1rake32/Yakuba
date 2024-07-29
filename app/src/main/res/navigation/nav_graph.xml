@@ -75,7 +75,7 @@
 
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.example.yakuba.UI.UI.Main.GalleryFragment"
+        android:name="com.example.yakuba.UI.UI.Main.gallery.GalleryFragment"
         android:label="fragment_gallery"
         tools:layout="@layout/fragment_gallery" >
         <action

@@ -39,16 +39,17 @@ class PostRecycle(context: Context) {
 
         post = mutableListOf(
             Post(data = data1, title = title1, description = description1, "108", "72", image1),
-            Post(data = data2, title = title2, description = description2, "115", "14", image2),
-            Post(data = data1, title = title1, description = description1, "108", "72", image1 ),
-            Post(data = data2, title = title2, description = description2, "115", "14", image2 ),
-            Post(data = data1, title = title1, description = description1, "108", "72", image1 ),
-            Post(data = data2, title = title2, description = description2, "115", "14", image2 ),
+            Post(data = data2, title = title2, description = description2, "87", "42", image2),
+            Post(data = data1, title = title1, description = description1, "52", "31", image1 ),
+            Post(data = data2, title = title2, description = description2, "49", "11", image2 ),
+            Post(data = data1, title = title1, description = description1, "305", "72", image1 ),
+            Post(data = data2, title = title2, description = description2, "112", "63", image2 ),
         )
     }
 
-    public fun getPersons(): MutableList<Post> {
+    public fun getPost(): MutableList<Post> {
         return post
     }
+
 
 }

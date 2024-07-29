@@ -44,7 +44,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center"
             android:layout_marginEnd="16dp"
-            android:text="Добавление фото" />
+            android:text="Создание поста" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="16dp"
+            style="@style/timerText"
+            android:text="Создать"/>
 
         <View
             android:layout_width="match_parent"
@@ -55,24 +63,61 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <TextView
-        android:id="@+id/textView10"
-        style="@style/timerText"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Выберите до 8 фотографии для поста"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <EditText
+        android:id="@+id/editText"
+        style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/red"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        android:hint="Название поста"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <EditText
+        android:id="@+id/editText2"
+        style="@style/InputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:hint="Описание поста"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/materialCheckBox"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <TextView
+        style="@style/MainDetailsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginStart="8dp"
+        android:text="Опубликовать в конкретное время"
+        app:layout_constraintStart_toEndOf="@+id/materialCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

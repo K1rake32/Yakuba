@@ -15,13 +15,17 @@ import com.example.yakuba.Recycle.coment.Person
 import com.example.yakuba.Recycle.coment.PersonAdapter
 import com.example.yakuba.Recycle.coment.PersonRecycle
 import com.example.yakuba.Recycle.home.Post
+import com.example.yakuba.Recycle.home.PostAdapter
 import com.example.yakuba.Recycle.home.PostPagerAdapter
+import com.example.yakuba.Recycle.home.PostRecycle
 import com.example.yakuba.databinding.FragmentDetailsBinding
 
 class FragmentDetails : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var adapter: PersonAdapter
+    private lateinit var postRecycle: PostRecycle
+    private lateinit var postAdapter: PostPagerAdapter
 
     private val personRecycle: PersonRecycle
         get() = (requireActivity().application as App).personService
@@ -30,21 +34,21 @@ class FragmentDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailsBinding.inflate(layoutInflater,container, false)
+        binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         rcPerson()
         sentComent()
-        pagerDetails()
     }
 
     private fun sentComent() {
         with(binding) {
-            sentComent.addTextChangedListener(object : TextWatcher{
+            sentComent.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -56,15 +60,11 @@ class FragmentDetails : Fragment() {
                         cardViewForSent.setCardBackgroundColor(Color.GRAY)
                     }
                 }
-
             })
         }
     }
 
-
-
     private fun rcPerson() {
-
         val manager = LinearLayoutManager(requireContext())
         adapter = PersonAdapter()
         adapter.data = personRecycle.getPersons()
@@ -73,7 +73,7 @@ class FragmentDetails : Fragment() {
             rcView.layoutManager = manager
             rcView.adapter = adapter
 
-            cardViewForSent.setOnClickListener() {
+            cardViewForSent.setOnClickListener {
                 val coment = sentComent.text.toString()
                 if (cardViewForSent.cardBackgroundColor.defaultColor == Color.RED) {
                     val newPerson = Person("Андрей Крутой", description = coment, "только что", R.drawable.rewiwse)
@@ -82,15 +82,6 @@ class FragmentDetails : Fragment() {
                     sentComent.text.clear()
                 }
             }
-
         }
     }
-
-    private fun pagerDetails() {
-
-        with(binding) {
-            pagerDetails.adapter = PostPagerAdapter()
-        }
-    }
-
 }
