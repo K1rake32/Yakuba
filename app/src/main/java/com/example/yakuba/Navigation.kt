@@ -1,6 +1,7 @@
 package com.example.yakuba
 
 import androidx.navigation.NavController
+import androidx.navigation.Navigator
 
 object NavigationFragment {
     fun NavigationAuth (navController: NavController) {
@@ -38,5 +39,9 @@ object NavigationFragment {
 
     fun NavigationCreatePost(navController: NavController) {
         navController.navigate(R.id.action_homeFragment_to_addPostPhotoFragment)
+    }
+
+    fun NavigationCreatPostBack(navController: NavController) {
+        navController.navigate(R.id.action_addPostPhotoFragment_to_homeFragment)
     }
 }

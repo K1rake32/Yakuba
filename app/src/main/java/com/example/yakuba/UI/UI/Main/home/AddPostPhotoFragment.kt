@@ -1,20 +1,35 @@
 package com.example.yakuba.UI.UI.Main.home
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.icu.util.Calendar
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yakuba.MAIN
+import com.example.yakuba.NavigationFragment
+import com.example.yakuba.R
 import com.example.yakuba.Recycle.App
 import com.example.yakuba.Recycle.addPost.AddPost
 import com.example.yakuba.Recycle.addPost.AddPostAdapter
 import com.example.yakuba.Recycle.addPost.AddPostRecycle
 import com.example.yakuba.databinding.FragmentAddPostPhotoBinding
+import org.w3c.dom.Text
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class AddPostPhotoFragment : Fragment() {
 
@@ -46,6 +61,7 @@ class AddPostPhotoFragment : Fragment() {
                 }
             }
             adapter.addPosts(selectedPosts)
+            updateText()
         }
     }
 
@@ -61,6 +77,9 @@ class AddPostPhotoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         rcAddPost()
+        setCurrentTime()
+        currentTime()
+        initUi()
     }
 
     private fun rcAddPost() {
@@ -72,6 +91,112 @@ class AddPostPhotoFragment : Fragment() {
         with(binding) {
             rcAddPost.layoutManager = manager
             rcAddPost.adapter = adapter
+
+            updateText()
         }
     }
+
+    private fun setCurrentTime() {
+        with(binding) {
+            val calendar = Calendar.getInstance()
+
+            val currentTime = calendar.time
+
+            val timeFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+
+            val formatedTime = timeFormat.format(currentTime)
+
+            realTime.setText(formatedTime)
+        }
+    }
+
+    private fun currentTime() {
+        with(binding) {
+
+            checkBoxTime.setOnCheckedChangeListener { _, isChecked ->
+                if (checkBoxTime.isChecked) {
+                    realTime.visibility = View.VISIBLE
+                    textTime.visibility = View.VISIBLE
+                } else {
+                    realTime.visibility = View.INVISIBLE
+                    textTime.visibility = View.INVISIBLE
+                }
+            }
+        }
+    }
+
+    private fun initUi() {
+        val textWatcher = object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                updateText()
+            }
+        }
+
+        with(binding) {
+            namePost.addTextChangedListener(textWatcher)
+            descriptionPost.addTextChangedListener(textWatcher)
+        }
+
+    }
+
+    private fun updateText() {
+        with(binding) {
+
+            val itemCount = adapter.itemCount
+            if (namePost.text.isNotEmpty() && descriptionPost.text.isNotEmpty() && itemCount > 3) {
+                createText.setTextColor(Color.RED)
+                createText.isClickable = true
+            } else {
+                createText.setTextColor(Color.GRAY)
+                createText.isClickable = false
+            }
+
+            navigateCreate()
+
+        }
+
+    }
+
+    private fun navigateCreate() {
+        with(binding) {
+
+            val currentColor = createText.currentTextColor
+
+            if (currentColor == Color.RED) {
+                createText.setOnClickListener() {
+                    NavigationFragment.NavigationCreatPostBack(MAIN.navController)
+                    toastCreate()
+                    adapter.keepOnlyOneItem()
+                }
+            }
+
+            backIcon.setOnClickListener() {
+                NavigationFragment.NavigationCreatPostBack(MAIN.navController)
+            }
+
+        }
+    }
+
+    private fun toastCreate() {
+
+        val toast = Toast.makeText(requireContext(), "", Toast.LENGTH_LONG)
+        val inflater: LayoutInflater = requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val layout = inflater.inflate(R.layout.item_create_post_toast, null)
+
+        val timeText = layout.findViewById<TextView>(R.id.textTime2)
+
+        timeText.text = binding.realTime.text
+
+        toast.apply {
+            setGravity(Gravity.TOP, 0, 370)
+            duration = Toast.LENGTH_LONG
+            view = layout
+            show()
+        }
+    }
+
 }

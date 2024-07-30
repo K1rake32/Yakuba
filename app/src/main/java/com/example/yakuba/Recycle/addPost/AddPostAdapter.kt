@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.MediaStore
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.RecyclerView
@@ -47,6 +48,16 @@ class AddPostAdapter(
                 }
                 activityResultLauncher.launch(intent)
             }
+
+            val countItem = itemCount
+            if (position > 0) {
+                removeItem.visibility = View.VISIBLE
+                removeItem.setOnClickListener {
+                    removePostAtPosition(position)
+                }
+            } else {
+                removeItem.visibility = View.GONE
+            }
         }
     }
 
@@ -55,5 +66,22 @@ class AddPostAdapter(
     fun addPosts(addPosts: List<AddPost>) {
         data.addAll(addPosts)
         notifyDataSetChanged()
+    }
+
+    private fun removePostAtPosition(position: Int) {
+        if (position in 0 until data.size) {
+            data.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, data.size)
+        }
+    }
+
+    fun keepOnlyOneItem() {
+        if (data.size > 1) {
+            val itemToKeep = data.first() // Или другой способ определить, какой элемент сохранить
+            data.clear()
+            data.add(itemToKeep)
+            notifyDataSetChanged()
+        }
     }
 }
