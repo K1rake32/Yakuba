@@ -253,4 +253,11 @@
         <item name="fontFamily">@font/inter</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="deleteText" parent="TextFontInterRegular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 </resources>

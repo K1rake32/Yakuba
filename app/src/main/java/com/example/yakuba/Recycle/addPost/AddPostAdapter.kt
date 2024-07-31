@@ -78,10 +78,11 @@ class AddPostAdapter(
 
     fun keepOnlyOneItem() {
         if (data.size > 1) {
-            val itemToKeep = data.first() // Или другой способ определить, какой элемент сохранить
+            val itemToKeep = data.first()
             data.clear()
             data.add(itemToKeep)
             notifyDataSetChanged()
         }
     }
+
 }
