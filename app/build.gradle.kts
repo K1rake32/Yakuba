@@ -71,4 +71,5 @@ dependencies {
     implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.0")
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation ("io.github.chaosleung:pinview:1.4.4")
+
 }

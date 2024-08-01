@@ -44,4 +44,12 @@ object NavigationFragment {
     fun NavigationCreatPostBack(navController: NavController) {
         navController.navigate(R.id.action_addPostPhotoFragment_to_homeFragment)
     }
+
+    fun NavigationStory(navController: NavController) {
+        navController.navigate(R.id.action_homeFragment_to_mainStoryFragment)
+    }
+
+    fun NavigationStoryBack(navController: NavController) {
+        navController.navigate(R.id.action_mainStoryFragment_to_homeFragment)
+    }
 }

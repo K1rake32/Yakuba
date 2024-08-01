@@ -260,4 +260,27 @@
         <item name="fontFamily">@font/inter</item>
         <item name="android:textStyle">normal</item>
     </style>
+
+    <style name="mainStoryText" parent="TextFontInterRegular">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="localTextStory" parent="TextFontInterRegular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="lifeTextStory" parent="TextFontInterRegular">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

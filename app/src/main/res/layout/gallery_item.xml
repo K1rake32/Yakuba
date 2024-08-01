@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="106dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/image1_gallery" />
+                android:src="@drawable/png_test1" />
 
         </com.google.android.material.card.MaterialCardView>
 

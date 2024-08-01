@@ -2,6 +2,7 @@ package com.example.yakuba.Recycle.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yakuba.MAIN
 import com.example.yakuba.NavigationFragment
@@ -9,6 +10,7 @@ import com.example.yakuba.R
 import com.example.yakuba.Recycle.coment.PersonAdapter
 import com.example.yakuba.databinding.PersonItemBinding
 import com.example.yakuba.databinding.PostItemBinding
+import kotlinx.coroutines.flow.flowOf
 
 class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
@@ -51,7 +53,32 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
                 NavigationFragment.NavgationDetails(MAIN.navController)
             }
 
+            var isHeartFilled = false
+            val heart = R.drawable.heart
+            val heartRed = R.drawable.likes_active
+
+            textLike.setCompoundDrawablesWithIntrinsicBounds(heart, 0, 0, 0)
+
+            val quanityLikes = textLike.text.toString()
+
+            var quanityInt = quanityLikes.toIntOrNull() ?: 0
+
+
+            textLike.setOnClickListener {
+                if (!isHeartFilled) {
+                    textLike.setCompoundDrawablesWithIntrinsicBounds(heartRed, 0, 0, 0)
+                    quanityInt += 1
+                } else {
+                    textLike.setCompoundDrawablesWithIntrinsicBounds(heart, 0, 0, 0)
+                    quanityInt -= 1
+                }
+                isHeartFilled = !isHeartFilled
+                textLike.text = quanityInt.toString()
+            }
+
         }
     }
+
+
 
 }

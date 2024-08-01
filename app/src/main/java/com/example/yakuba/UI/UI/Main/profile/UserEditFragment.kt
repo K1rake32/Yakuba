@@ -115,16 +115,23 @@ class UserEditFragment : Fragment() {
     private fun dataEdit() {
         with(binding) {
                 val nameUser = nameEdit.text.toString()
+                val sername = userNameEdit.text.toString()
 
-                if (nameUser != "" && nameUser.isNotEmpty()) {
+                if ((nameUser != "" && nameUser.isNotEmpty()) || (sername != "" && nameUser.isNotEmpty())) {
                     val spannableString = SpannableString(nameUser)
+                    val spannableString2 = SpannableString(sername)
                     dataModel.name.value = spannableString
+                    dataModel.sername.value = spannableString2
                     nameEdit.clearFocus()
+                    userNameEdit.clearFocus()
                     hideKeyboard()
                 } else {
                     nameEdit.clearFocus()
                     hideKeyboard()
+                    userNameEdit.clearFocus()
+                    hideKeyboard()
                 }
+
         }
     }
 

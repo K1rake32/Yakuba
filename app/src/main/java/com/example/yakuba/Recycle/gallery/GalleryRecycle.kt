@@ -15,7 +15,7 @@ class GalleryRecycle(context: Context) {
         val description3 = context.getString(R.string.gallery_description3)
 
         gallery = mutableListOf(
-            Gallery(R.drawable.image1_gallery, "15 марта 2022", "Омск", description = description1),
+            Gallery(R.drawable.png_test1, "15 марта 2022", "Омск", description = description1),
             Gallery(R.drawable.image2_gallery, "10 марта 2022", "Тюмень", description = description2),
             Gallery(R.drawable.image3_gallery, "27 февраля 2022","Сочи", description = description3),
             Gallery(R.drawable.image1_gallery, "15 февраля 2022", "Калуга", description = description1),

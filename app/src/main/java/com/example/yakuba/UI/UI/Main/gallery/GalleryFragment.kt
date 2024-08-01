@@ -53,9 +53,6 @@ class GalleryFragment : Fragment() {
             rcViewGallery.layoutManager = manager
             rcViewGallery.adapter = adapter
 
-
-            val itemDecoration = ItemOffsetDecoration(resources.getDimensionPixelSize(R.dimen.item_offset))
-            rcViewGallery.addItemDecoration(itemDecoration)
         }
 
     }

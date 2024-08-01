@@ -1,9 +1,12 @@
 package com.example.yakuba.UI.UI.Main.profile
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
@@ -11,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.example.yakuba.DataModel
 import com.example.yakuba.MAIN
@@ -37,6 +41,7 @@ class UserFragment : Fragment() {
         editProfile()
         leaveInProfile()
         nameEdit()
+        vkWakeup()
     }
 
     private fun editProfile() {
@@ -75,9 +80,29 @@ class UserFragment : Fragment() {
     }
 
     private fun nameEdit() {
-        dataModel.name.observe(activity as LifecycleOwner, {
-            binding.nameEdit.text = it
-        })
+
+        with(binding) {
+            dataModel.name.observe(activity as LifecycleOwner, {
+                nameEdit.text = it
+            })
+
+                dataModel.sername.observe(activity as LifecycleOwner, {
+                    sernameEdit.text = it
+                })
+        }
     }
+
+    private fun vkWakeup() {
+        with(binding) {
+            vkNavigate.setOnClickListener() {
+                val url = "https://vk.com/wakeup0002"
+
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(url)
+                startActivity(intent)
+            }
+        }
+    }
+
 
 }

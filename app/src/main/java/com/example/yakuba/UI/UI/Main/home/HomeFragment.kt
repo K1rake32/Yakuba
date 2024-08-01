@@ -41,6 +41,7 @@ class HomeFragment : Fragment() {
 
         rcPost()
         createPost()
+        navigateStory()
     }
 
     private fun rcPost() {
@@ -61,5 +62,12 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
+    private fun navigateStory() {
+        binding.mainStory.setOnClickListener() {
+            NavigationFragment.NavigationStory(MAIN.navController)
+        }
+    }
+
 }
 
