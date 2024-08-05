@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yakuba.DataModel
 import com.example.yakuba.MAIN
 import com.example.yakuba.NavigationFragment
 import com.example.yakuba.R
@@ -40,8 +45,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         rcPost()
-        createPost()
+        createPostNavigation()
         navigateStory()
+        updatePost()
     }
 
     private fun rcPost() {
@@ -55,7 +61,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun createPost() {
+    private fun createPostNavigation() {
         with(binding) {
             addPost.setOnClickListener() {
                 NavigationFragment.NavigationCreatePost(MAIN.navController)
@@ -69,5 +75,16 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun updatePost() {
+        val viewModel = ViewModelProvider(requireActivity()).get(DataModel::class.java)
+
+        viewModel.posts.observe(viewLifecycleOwner, Observer { posts ->
+            if (posts.isNotEmpty()) {
+                adapter.addPost(posts.last())
+            }
+        })
+    }
 }
+
+
 

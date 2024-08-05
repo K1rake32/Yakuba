@@ -8,5 +8,6 @@ data class Post (
     val description: String,
     val likes: String,
     val comment: String,
-    val ImageId: List<Int>
+    val ImageId: List<Any>
 )
+

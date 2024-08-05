@@ -18,7 +18,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isInvisible
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yakuba.DataModel
 import com.example.yakuba.MAIN
 import com.example.yakuba.NavigationFragment
 import com.example.yakuba.R
@@ -26,15 +29,21 @@ import com.example.yakuba.Recycle.App
 import com.example.yakuba.Recycle.addPost.AddPost
 import com.example.yakuba.Recycle.addPost.AddPostAdapter
 import com.example.yakuba.Recycle.addPost.AddPostRecycle
+import com.example.yakuba.Recycle.home.Post
+import com.example.yakuba.Recycle.home.PostAdapter
 import com.example.yakuba.databinding.FragmentAddPostPhotoBinding
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 class AddPostPhotoFragment : Fragment() {
 
     private lateinit var binding: FragmentAddPostPhotoBinding
     private lateinit var adapter: AddPostAdapter
+    private lateinit var adapterCreate: PostAdapter
+    private lateinit var dataModel: DataModel
+
 
     private val addPostRecycle: AddPostRecycle
         get() = (requireActivity().application as App).addPostService
@@ -76,6 +85,8 @@ class AddPostPhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        dataModel = ViewModelProvider(requireActivity()).get(DataModel::class.java)
+
         rcAddPost()
         setCurrentTime()
         currentTime()
@@ -87,6 +98,7 @@ class AddPostPhotoFragment : Fragment() {
 
         adapter = AddPostAdapter(selectImagesLauncher)
         adapter.data = addPostRecycle.getAddPost()
+        adapterCreate = PostAdapter()
 
         with(binding) {
             rcAddPost.layoutManager = manager
@@ -161,13 +173,33 @@ class AddPostPhotoFragment : Fragment() {
 
     }
 
-    private fun navigateCreate() {
+    public fun navigateCreate() {
         with(binding) {
 
             val currentColor = createText.currentTextColor
 
+            val imagesWithoutFirst = adapter.getImagesWithoutFirst()
+
             if (currentColor == Color.RED) {
-                createText.setOnClickListener() {
+                createText.setOnClickListener {
+
+                    val textTitlePost = namePost.text.toString()
+                    val textDescriptionPost = descriptionPost.text.toString()
+
+                    val viewModel = ViewModelProvider(requireActivity()).get(DataModel::class.java)
+
+                    val newPost = Post(
+                        "Только что",
+                        title = textTitlePost,
+                        description = textDescriptionPost,
+                        "0",
+                        "0",
+                        ImageId = imagesWithoutFirst
+                    )
+
+                    viewModel.addPost(newPost)
+
+
                     NavigationFragment.NavigationCreatPostBack(MAIN.navController)
                     toastCreate()
                     adapter.keepOnlyOneItem()
@@ -198,5 +230,6 @@ class AddPostPhotoFragment : Fragment() {
             show()
         }
     }
+
 
 }

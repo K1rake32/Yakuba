@@ -6,8 +6,10 @@ import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.yakuba.Recycle.home.Post
 
-class DataModel: ViewModel() {
+class DataModel : ViewModel() {
+    // LiveData для хранения сообщений
     val message: MutableLiveData<SpannableString?> by lazy {
         MutableLiveData<SpannableString?>()
     }
@@ -20,8 +22,13 @@ class DataModel: ViewModel() {
         MutableLiveData<SpannableString?>()
     }
 
-    val nameBack: MutableLiveData<SpannableString?> by lazy {
-        MutableLiveData<SpannableString?>()
-    }
+    private val _posts = MutableLiveData<MutableList<Post>>().apply { value = mutableListOf() }
+    val posts: LiveData<MutableList<Post>> get() = _posts
 
+    fun addPost(post: Post) {
+        _posts.value?.let {
+            it.add(post)
+            _posts.value = it
+        }
+    }
 }

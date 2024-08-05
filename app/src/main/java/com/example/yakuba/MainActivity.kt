@@ -5,8 +5,12 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.example.yakuba.UI.UI.Auth.MainRegisterFragment
+import com.example.yakuba.UI.UI.Main.home.AddPostPhotoFragment
+import com.example.yakuba.UI.UI.Main.home.HomeFragment
 import com.example.yakuba.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         navController = Navigation.findNavController(this, R.id.nav_host_Navigation)
         MAIN = this
-
-
 
         val bottomNavigationView = binding.bottonNavigation
 
@@ -61,11 +63,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
         dataModel.message.observe(this, {})
     }
-
 
     override fun onBackPressed() {
         val currentDestination = navController.currentDestination
@@ -78,6 +77,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
 }

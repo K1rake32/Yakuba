@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.yakuba.MAIN
 import com.example.yakuba.NavigationFragment
 import com.example.yakuba.R
+import com.example.yakuba.Recycle.coment.Person
 import com.example.yakuba.Recycle.coment.PersonAdapter
 import com.example.yakuba.databinding.PersonItemBinding
 import com.example.yakuba.databinding.PostItemBinding
@@ -79,6 +80,9 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
         }
     }
 
-
+    fun addPost(post: Post) {
+        data.add(0, post)
+        notifyItemInserted(0)
+    }
 
 }

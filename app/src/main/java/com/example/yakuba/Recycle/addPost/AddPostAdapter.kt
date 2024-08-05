@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yakuba.Recycle.coment.Person
+import com.example.yakuba.Recycle.home.Post
 import com.example.yakuba.databinding.ItemAddPostBinding
 import com.example.yakuba.databinding.PersonItemBinding
 
@@ -68,7 +69,15 @@ class AddPostAdapter(
         notifyDataSetChanged()
     }
 
-    private fun removePostAtPosition(position: Int) {
+    fun getImagesWithoutFirst(): List<Any> {
+        return if (data.isNotEmpty()) {
+            data.drop(1).map { it.img }
+        } else {
+            emptyList()
+        }
+    }
+
+        private fun removePostAtPosition(position: Int) {
         if (position in 0 until data.size) {
             data.removeAt(position)
             notifyItemRemoved(position)
@@ -83,6 +92,10 @@ class AddPostAdapter(
             data.add(itemToKeep)
             notifyDataSetChanged()
         }
+    }
+
+    fun getSelectedImages(): List<Any> {
+        return data.map { it.img as? Any ?: "" }
     }
 
 }

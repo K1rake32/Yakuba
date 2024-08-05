@@ -62,7 +62,7 @@
 
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.example.yakuba.UI.UI.Main.ShopFragment"
+        android:name="com.example.yakuba.UI.UI.Main.shop.ShopFragment"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" >
         <action
