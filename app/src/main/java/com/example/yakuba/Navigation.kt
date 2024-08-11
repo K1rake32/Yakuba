@@ -8,6 +8,10 @@ object NavigationFragment {
         navController.navigate(R.id.action_mainRegisterFragment_to_nubmerConfirmationFragment)
     }
 
+    fun NavigationAuthBack(navController: NavController) {
+        navController.navigate(R.id.action_nubmerConfirmationFragment_to_mainRegisterFragment)
+    }
+
         fun NavigationInf(navController: NavController) {
         navController.navigate(R.id.action_nubmerConfirmationFragment_to_userInformationFragment)
     }

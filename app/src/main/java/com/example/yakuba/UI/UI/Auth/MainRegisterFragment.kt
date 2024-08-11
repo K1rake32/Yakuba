@@ -23,6 +23,7 @@ import com.example.yakuba.MAIN
 import com.example.yakuba.NavigationFragment
 import com.example.yakuba.R
 import com.example.yakuba.databinding.FragmentMainRegisterBinding
+import com.redmadrobot.inputmask.MaskedTextChangedListener
 
 class MainRegisterFragment : Fragment() {
 
@@ -42,12 +43,19 @@ class MainRegisterFragment : Fragment() {
 
         init()
         initMediaPlayer()
+        setupInputMask()
     }
 
     private fun init() {
         with(binding) {
             numberEdit.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     updateContinueButtonState()
@@ -66,11 +74,11 @@ class MainRegisterFragment : Fragment() {
     private fun updateContinueButtonState() {
         with(binding) {
             val number = numberEdit.text.toString()
-            val isEnabled = number.length == 10 && checkBox.isChecked
+            val isEnabled = number.length == 16 && checkBox.isChecked
             continueButton.isEnabled = isEnabled
             if (isEnabled) {
                 continueButton.backgroundTintList = ColorStateList.valueOf(Color.RED)
-                continueButton.setTextColor(Color.WHITE )
+                continueButton.setTextColor(Color.WHITE)
                 continueButton.setOnClickListener() {
                     initNumber()
                     NavigationFragment.NavigationAuth(MAIN.navController)
@@ -89,7 +97,8 @@ class MainRegisterFragment : Fragment() {
 
         binding.PlayerFAQ.player = player
 
-        val vidoUri = Uri.parse("android.resource://" + requireContext().packageName + "/" + R.raw.yakuba)
+        val vidoUri =
+            Uri.parse("android.resource://" + requireContext().packageName + "/" + R.raw.yakuba)
 
         val video = MediaItem.Builder()
             .setUri(vidoUri)
@@ -106,7 +115,8 @@ class MainRegisterFragment : Fragment() {
         val number = binding.numberEdit.text.toString()
         val numberPlus = "+7$number"
 
-        val fullNumber = "Для подтверждения\nна номер $numberPlus поступит\nзвонок, введите последние 4 цифры."
+        val fullNumber =
+            "Для подтверждения\nна номер $numberPlus поступит\nзвонок, введите последние 4 цифры."
 
         val spanableString = SpannableString(fullNumber)
 
@@ -124,4 +134,15 @@ class MainRegisterFragment : Fragment() {
 
     }
 
+
+    private fun setupInputMask() {
+
+        val listener = MaskedTextChangedListener(
+            " ([000]) [000]-[00]-[00]",
+            binding.numberEdit
+        )
+
+        binding.numberEdit.addTextChangedListener(listener)
+        binding.numberEdit.onFocusChangeListener = listener
+    }
 }

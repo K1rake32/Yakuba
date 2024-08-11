@@ -82,13 +82,22 @@ class UserFragment : Fragment() {
     private fun nameEdit() {
 
         with(binding) {
-            dataModel.name.observe(activity as LifecycleOwner, {
-                nameEdit.text = it
-            })
+                dataModel.name.observe(activity as LifecycleOwner, {
+                    nameEdit.text = it
+                })
 
                 dataModel.sername.observe(activity as LifecycleOwner, {
                     sernameEdit.text = it
                 })
+
+                dataModel.userAvatar.observe(activity as LifecycleOwner, {uri ->
+                    uri?.let {
+                        binding.userImage.setImageURI(it)
+                    }
+                })
+
+
+
         }
     }
 

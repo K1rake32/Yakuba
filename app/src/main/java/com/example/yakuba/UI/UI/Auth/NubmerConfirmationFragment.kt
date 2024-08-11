@@ -3,6 +3,7 @@ package com.example.yakuba.UI.UI.Auth
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
@@ -23,6 +24,8 @@ class NubmerConfirmationFragment : Fragment() {
 
     private val dataModel: DataModel by activityViewModels()
     private lateinit var binding:FragmentNubmerConfirmationBinding
+    private var timer:CountDownTimer? = null
+    private var isTimer: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +40,8 @@ class NubmerConfirmationFragment : Fragment() {
 
         initUI()
         dataModelNumber()
-
+        timerUI()
+        navigationUI()
     }
 
     private fun initUI() {
@@ -82,6 +86,59 @@ class NubmerConfirmationFragment : Fragment() {
             duration = Toast.LENGTH_SHORT
             view = layout
             show()
+        }
+    }
+
+    private fun timerUI() {
+
+        binding.apply {
+            timerText.setOnClickListener() {
+                startCountDawnTimer(10000)
+            }
+        }
+
+    }
+
+    private fun startCountDawnTimer(timeMillis: Long) {
+
+        if (timer != null) {
+            return
+        }
+
+        with(binding) {
+            timerText.setTextColor(Color.GRAY)
+
+            timer = object : CountDownTimer(timeMillis, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val secondsRemaining = millisUntilFinished / 1000
+
+                    if (secondsRemaining in 2..4) {
+                        timerText.text = "Позвонить еще раз через $secondsRemaining секунды"
+                    } else if (secondsRemaining == 1L) {
+                        timerText.text = "Позвонить еще раз через $secondsRemaining секунду"
+                    } else {
+                        timerText.text = "Позвонить еще раз через $secondsRemaining секунд"
+                    }
+
+                    if (secondsRemaining == 0L) {
+                        return onFinish()
+                    }
+
+                }
+
+                override fun onFinish() {
+                    timerText.text = "Заказать звонок"
+                    timerText.setTextColor(Color.RED)
+                    timer = null
+                }
+
+            }.start()
+        }
+    }
+
+    private fun navigationUI() {
+        binding.backIcon.setOnClickListener() {
+            NavigationFragment.NavigationAuthBack(MAIN.navController)
         }
     }
 

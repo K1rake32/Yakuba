@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yakuba.DataModel
 import com.example.yakuba.R
 import com.example.yakuba.Recycle.App
 import com.example.yakuba.Recycle.coment.Person
@@ -26,6 +29,7 @@ class FragmentDetails : Fragment() {
     private lateinit var adapter: PersonAdapter
     private lateinit var postRecycle: PostRecycle
     private lateinit var postAdapter: PostPagerAdapter
+    private val dataModel: DataModel by activityViewModels()
 
     private val personRecycle: PersonRecycle
         get() = (requireActivity().application as App).personService
@@ -70,13 +74,16 @@ class FragmentDetails : Fragment() {
         adapter.data = personRecycle.getPersons()
 
         with(binding) {
+
             rcView.layoutManager = manager
             rcView.adapter = adapter
 
             cardViewForSent.setOnClickListener {
                 val coment = sentComent.text.toString()
                 if (cardViewForSent.cardBackgroundColor.defaultColor == Color.RED) {
-                    val newPerson = Person("Андрей Крутой", description = coment, "только что", R.drawable.rewiwse)
+                    val fullName = "${dataModel.name.value ?: "Имя"} ${dataModel.sername.value ?: "Фамилия"}"
+                    val avatarUri = dataModel.userAvatar.value
+                    val newPerson = Person(name = fullName, description = coment, "только что", avatarUri = avatarUri)
                     adapter.addPerson(newPerson)
                     rcView.scrollToPosition(0)
                     sentComent.text.clear()

@@ -16,11 +16,6 @@
         <item name="pinViewStyle">@style/PinWidget.PinView</item>
     </style>
 
-    <style name="MyCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="colorControlNormal">@color/red</item>
-        <item name="colorControlActivated">@color/red</item>
-    </style>
-
     <style name="AppBarWhite" parent="Widget.MaterialComponents.Toolbar">
         <item name="background">@color/white</item>
         <item name="titleTextColor">@color/black</item>

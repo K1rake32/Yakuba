@@ -57,7 +57,14 @@ class PersonAdapter: RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
             NameText.text = person.name
             dataText.text = person.data
             descriptionText.text = person.description
-            userImage.setImageResource(person.image)
+
+            if (person.avatarUri != null) {
+                userImage.setImageURI(person.avatarUri)
+            } else if (person.image != null) {
+                userImage.setImageResource(person.image)
+            } else {
+                userImage.setImageResource(R.drawable.user)
+            }
 
             moreComent.setOnClickListener() {
                 showDialog(holder.itemView.context, position)

@@ -50,12 +50,14 @@ class UserEditFragment : Fragment() {
         backUser()
         saveData()
         dialogDelete()
+        broadcastUI()
     }
 
     private fun backUser() {
         with(binding) {
             backIcon.setOnClickListener {
                 NavigationFragment.NavigationDataSave(MAIN.navController)
+                dataEdit()
             }
         }
     }
@@ -153,4 +155,16 @@ class UserEditFragment : Fragment() {
         }
     }
 
+    private fun broadcastUI() {
+        with(binding) {
+
+            dataModel.name.observe(activity as LifecycleOwner) { spannable ->
+                nameEdit.setText(spannable?.toString() ?: "")
+            }
+
+            dataModel.sername.observe(activity as LifecycleOwner) { spannable ->
+                userNameEdit.setText(spannable?.toString() ?: "")
+            }
+        }
+    }
 }

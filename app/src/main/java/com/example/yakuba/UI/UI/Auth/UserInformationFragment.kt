@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
+import android.text.SpannableString
 import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,8 +18,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.FragmentNavigator
+import com.example.yakuba.DataModel
 import com.example.yakuba.MAIN
 import com.example.yakuba.NavigationFragment
 import com.example.yakuba.R
@@ -28,7 +31,7 @@ import com.example.yakuba.databinding.FragmentUserInformationBinding
 class UserInformationFragment : Fragment() {
 
     private lateinit var binding:FragmentUserInformationBinding
-
+    private val dataModel: DataModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,10 +51,6 @@ class UserInformationFragment : Fragment() {
 
         private fun initUI() {
             with(binding) {
-                val name = name.text.toString()
-                val userName = userName.text.toString()
-                val email = Email.text.toString()
-
                 val TextWatcher = object:TextWatcher{
                     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -62,9 +61,9 @@ class UserInformationFragment : Fragment() {
                     }
                 }
 
-                binding.name.addTextChangedListener(TextWatcher)
-                binding.userName.addTextChangedListener(TextWatcher)
-                binding.Email.addTextChangedListener(TextWatcher)
+                name.addTextChangedListener(TextWatcher)
+                userName.addTextChangedListener(TextWatcher)
+                Email.addTextChangedListener(TextWatcher)
 
             }
 
@@ -99,9 +98,9 @@ class UserInformationFragment : Fragment() {
                 completeAuth.setOnClickListener() {
                     if(allEditText()) {
                         NavigationFragment.NavigationMain(MAIN.navController)
+                        broadcastData()
                     }
                 }
-
             }
         }
 
@@ -134,12 +133,34 @@ class UserInformationFragment : Fragment() {
             if(selectedImageUri != null ) {
                 if (selectedImageUri != null )
                     binding.aroundImg.setImageURI(selectedImageUri)
+                    dataModel.userAvatar.value = selectedImageUri
             }
         }
     }
 
     companion object {
         private const val GALLERY_REQUEST_CODE = 100
+    }
+
+    private fun broadcastData() {
+        with(binding) {
+
+            //передача фамилии и имени
+
+            val nameText = name.text.toString()
+            val surnameText = userName.text.toString()
+
+            val spanableStringName = SpannableString(nameText)
+            val spanableStringSurname = SpannableString(surnameText)
+
+            dataModel.name.value = spanableStringName
+            dataModel.sername.value = spanableStringSurname
+
+            //передача аватарки пользователя
+
+
+
+        }
     }
 
 }
