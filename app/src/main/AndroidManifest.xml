@@ -8,6 +8,7 @@
     <application
         android:name=".Recycle.App"
         android:allowBackup="true"
+        android:windowSoftInputMode="adjustResize"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/splashlogo"

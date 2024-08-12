@@ -131,9 +131,10 @@ class UserInformationFragment : Fragment() {
         if (requestCode == GALLERY_REQUEST_CODE && resultCode == AppCompatActivity.RESULT_OK && data != null ) {
             val selectedImageUri= data.data
             if(selectedImageUri != null ) {
-                if (selectedImageUri != null )
+                if (selectedImageUri != null) {
                     binding.aroundImg.setImageURI(selectedImageUri)
                     dataModel.userAvatar.value = selectedImageUri
+                }
             }
         }
     }

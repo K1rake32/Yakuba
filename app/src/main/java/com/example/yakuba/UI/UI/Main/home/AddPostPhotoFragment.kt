@@ -159,7 +159,7 @@ class AddPostPhotoFragment : Fragment() {
         with(binding) {
 
             val itemCount = adapter.itemCount
-            if (namePost.text.isNotEmpty() && descriptionPost.text.isNotEmpty() && itemCount > 3) {
+            if (namePost.text.isNotEmpty() && descriptionPost.text.isNotEmpty() && itemCount > 1) {
                 createText.setTextColor(Color.RED)
                 createText.isClickable = true
             } else {

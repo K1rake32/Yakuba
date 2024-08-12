@@ -1,23 +1,27 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:clipToPadding="false"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".UI.UI.Auth.MainRegisterFragment">
 
     <androidx.media3.ui.PlayerView
         android:id="@+id/PlayerFAQ"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="500dp"
+        android:layout_margin="0dp"
+        android:background="@color/white"
+        android:padding="0dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="430dp"
         android:background="@drawable/background_for_reg"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/white">
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/welcome_reg"
@@ -129,4 +133,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

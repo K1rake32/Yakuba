@@ -2,6 +2,7 @@ package com.example.yakuba.UI.UI.Auth
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -14,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.activityViewModels
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
@@ -40,6 +42,26 @@ class MainRegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.constraintLayout) { view, insets ->
+            val params = view.layoutParams as ViewGroup.MarginLayoutParams
+            params.bottomMargin = insets.systemWindowInsetBottom
+            view.layoutParams = params
+            insets.consumeSystemWindowInsets()
+        }
+
+
+        view.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            view.getWindowVisibleDisplayFrame(rect)
+            val screenHeight = view.rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+            if (keypadHeight > screenHeight * 0.15) {
+                binding.constraintLayout.translationY = -keypadHeight.toFloat()
+            } else {
+                binding.constraintLayout.translationY = 0f
+            }
+        }
 
         init()
         initMediaPlayer()

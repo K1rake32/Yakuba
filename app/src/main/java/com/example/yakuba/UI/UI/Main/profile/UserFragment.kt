@@ -42,6 +42,7 @@ class UserFragment : Fragment() {
         leaveInProfile()
         nameEdit()
         vkWakeup()
+        feedbackProfile()
     }
 
     private fun editProfile() {
@@ -90,11 +91,15 @@ class UserFragment : Fragment() {
                     sernameEdit.text = it
                 })
 
-                dataModel.userAvatar.observe(activity as LifecycleOwner, {uri ->
+            dataModel.userAvatar.observe(activity as LifecycleOwner, { uri ->
+                if (userImage != null) {
                     uri?.let {
-                        binding.userImage.setImageURI(it)
+                        userImage.setImageURI(it)
+                    } ?: run {
+                        userImage.setImageResource(R.drawable.user)
                     }
-                })
+                }
+            })
 
 
 
@@ -111,6 +116,14 @@ class UserFragment : Fragment() {
                 startActivity(intent)
             }
         }
+    }
+
+    private fun feedbackProfile() {
+
+        binding.feedback.setOnClickListener() {
+            NavigationFragment.NavigationFeedback(MAIN.navController)
+        }
+
     }
 
 

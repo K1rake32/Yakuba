@@ -1,9 +1,11 @@
 package com.example.yakuba.Recycle.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.yakuba.MAIN
 import com.example.yakuba.NavigationFragment
 import com.example.yakuba.R
@@ -15,7 +17,6 @@ import kotlinx.coroutines.flow.flowOf
 
 class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
-
     var data: MutableList<Post> = mutableListOf()
         set(newValue) {
             field = newValue
@@ -24,6 +25,8 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     inner class PostViewHolder(val binding: PostItemBinding) :
         RecyclerView.ViewHolder(binding.root)
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostAdapter.PostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -42,7 +45,18 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
             textDataHome.text = post.data
             title.text = post.title
 
+            val pagerAdapter = PostPagerAdapter(post.ImageId)
             pager.adapter = PostPagerAdapter(post.ImageId)
+
+            val totalPages = pagerAdapter.itemCount
+            textIndicator.text = "1/$totalPages"
+
+            pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(pagePosition: Int) {
+                    super.onPageSelected(pagePosition)
+                    textIndicator.text = "${pagePosition + 1}/$totalPages"
+                }
+            })
 
             description.text = post.description
             textLike.text = post.likes
@@ -77,6 +91,10 @@ class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
                 textLike.text = quanityInt.toString()
             }
 
+            if (totalPages == 1) {
+                dotsIndicator.visibility = View.INVISIBLE
+                textIndicator.visibility = View.INVISIBLE
+            }
         }
     }
 

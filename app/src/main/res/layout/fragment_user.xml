@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/rewiwse" />
+                android:src="@drawable/user" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -123,6 +123,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <TextView
+            android:id="@+id/feedback"
             style="@style/TitleTextInHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

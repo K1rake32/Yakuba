@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".UI.UI.Main.profile.UserEditFragment">
+    tools:context=".UI.UI.Main.profile.FeedbackFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
@@ -38,12 +38,12 @@
 
         <TextView
             android:id="@+id/dataSave"
-            style="@style/nextText"
+            style="@style/TitleTextInHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|end"
+            android:layout_gravity="center_vertical|center"
             android:layout_marginEnd="16dp"
-            android:text="Сохранить" />
+            android:text="Обратная связь" />
 
         <View
             android:layout_width="match_parent"
@@ -51,140 +51,101 @@
             android:layout_gravity="bottom"
             android:background="@color/grey_white" />
 
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView3"
-        style="@style/CardViewUser"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/mainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:text="@string/feedback_main_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout">
-
-        <ImageView
-            android:id="@+id/mainAvatarImg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/user"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="182dp" />
-
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout" />
 
     <TextView
-        android:id="@+id/textView27"
-        style="@style/nextText"
+        android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Изменить фото"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
-
-    <TextView
-        android:id="@+id/textView28"
+        android:layout_marginTop="32dp"
         style="@style/numberText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="16dp"
-        android:text="Имя"
+        android:text="Name"
+        android:layout_marginStart="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
         android:id="@+id/nameEdit"
         style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:text="Андрей"
-        android:paddingBottom="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
-
-    <TextView
-        android:id="@+id/textView29"
-        style="@style/numberText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="24dp"
-        android:text="Фамилия"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEdit" />
-
-    <EditText
-        android:id="@+id/userNameEdit"
-        style="@style/InputText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:hint="Как Вас зовут?"
         android:layout_marginHorizontal="16dp"
-        android:text="Крутой"
         android:paddingBottom="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/name_text" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/email_text"
         style="@style/numberText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="75dp"
         android:text="E-mail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNameEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/name_text" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/mail_edit"
         style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:hint="Почта для ответа"
         android:paddingBottom="15dp"
-        android:hint="Не указан"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintTop_toBottomOf="@+id/email_text" />
 
     <TextView
-        android:id="@+id/textView31"
+        android:id="@+id/appelation_text"
         style="@style/numberText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="24dp"
-        android:text="Телефон"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="75dp"
+        android:text="Appellation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/email_text" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/applicationEdit"
         style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
         android:layout_marginHorizontal="16dp"
-        android:hint="+7 (951) 355 – 05 – 03"
-        app:layout_constraintTop_toBottomOf="@+id/textView31"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <TextView
-        android:id="@+id/deleteProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        style="@style/UserNameText"
-        android:text="Удалить профиль"
+        android:hint="Ваше обращение"
+        android:paddingBottom="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/appelation_text" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sentApplication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        style="@style/ButtonNextStyle"
+        android:text="Отправить"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/applicationEdit" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

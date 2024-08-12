@@ -56,4 +56,13 @@ object NavigationFragment {
     fun NavigationStoryBack(navController: NavController) {
         navController.navigate(R.id.action_mainStoryFragment_to_homeFragment)
     }
+
+    fun NavigationFeedback(navController: NavController) {
+        navController.navigate(R.id.action_userFragment_to_feedbackFragment)
+    }
+
+    fun NavigationFeedbackBack(navController: NavController) {
+        navController.navigate(R.id.action_feedbackFragment_to_userFragment)
+    }
+
 }

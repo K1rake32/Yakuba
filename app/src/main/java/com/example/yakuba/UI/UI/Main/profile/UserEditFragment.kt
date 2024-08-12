@@ -165,6 +165,17 @@ class UserEditFragment : Fragment() {
             dataModel.sername.observe(activity as LifecycleOwner) { spannable ->
                 userNameEdit.setText(spannable?.toString() ?: "")
             }
+
+            dataModel.userAvatar.observe(activity as LifecycleOwner, { uri ->
+                if (mainAvatarImg != null) {
+                    uri?.let {
+                        mainAvatarImg.setImageURI(it)
+                    } ?: run {
+                        mainAvatarImg.setImageResource(R.drawable.user)
+                    }
+                }
+            })
+
         }
     }
 }
