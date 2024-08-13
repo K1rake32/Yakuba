@@ -43,26 +43,6 @@ class MainRegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.constraintLayout) { view, insets ->
-            val params = view.layoutParams as ViewGroup.MarginLayoutParams
-            params.bottomMargin = insets.systemWindowInsetBottom
-            view.layoutParams = params
-            insets.consumeSystemWindowInsets()
-        }
-
-
-        view.viewTreeObserver.addOnGlobalLayoutListener {
-            val rect = Rect()
-            view.getWindowVisibleDisplayFrame(rect)
-            val screenHeight = view.rootView.height
-            val keypadHeight = screenHeight - rect.bottom
-            if (keypadHeight > screenHeight * 0.15) {
-                binding.constraintLayout.translationY = -keypadHeight.toFloat()
-            } else {
-                binding.constraintLayout.translationY = 0f
-            }
-        }
-
         init()
         initMediaPlayer()
         setupInputMask()
@@ -72,12 +52,7 @@ class MainRegisterFragment : Fragment() {
         with(binding) {
             numberEdit.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
+                    s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     updateContinueButtonState()
@@ -114,16 +89,17 @@ class MainRegisterFragment : Fragment() {
     }
 
     private fun initMediaPlayer() {
+
         val player = ExoPlayer.Builder(requireContext())
             .build()
 
         binding.PlayerFAQ.player = player
+        binding.PlayerFAQ.setUseController(false)
 
-        val vidoUri =
-            Uri.parse("android.resource://" + requireContext().packageName + "/" + R.raw.yakuba)
+        val videoUri = Uri.parse("android.resource://" + requireContext().packageName + "/" + R.raw.yakuba)
 
         val video = MediaItem.Builder()
-            .setUri(vidoUri)
+            .setUri(videoUri)
             .build()
 
         player.addMediaItem(video)
@@ -141,6 +117,8 @@ class MainRegisterFragment : Fragment() {
             "Для подтверждения\nна номер $numberPlus поступит\nзвонок, введите последние 4 цифры."
 
         val spanableString = SpannableString(fullNumber)
+        val spannableString2 = SpannableString(numberPlus)
+
 
         val start = fullNumber.indexOf(numberPlus)
         val end = start + numberPlus.length
@@ -153,6 +131,8 @@ class MainRegisterFragment : Fragment() {
         )
 
         dataModel.message.value = spanableString
+        dataModel.number.value = spannableString2
+
 
     }
 

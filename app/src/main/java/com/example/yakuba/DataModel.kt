@@ -15,11 +15,19 @@ class DataModel : ViewModel() {
         MutableLiveData<SpannableString?>()
     }
 
+    val number: MutableLiveData<SpannableString?> by lazy {
+        MutableLiveData<SpannableString?>()
+    }
+
     val name: MutableLiveData<SpannableString?> by lazy {
         MutableLiveData<SpannableString?>()
     }
 
     val sername: MutableLiveData<SpannableString?> by lazy {
+        MutableLiveData<SpannableString?>()
+    }
+
+    val email: MutableLiveData<SpannableString?> by lazy {
         MutableLiveData<SpannableString?>()
     }
 

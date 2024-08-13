@@ -146,19 +146,19 @@ class UserInformationFragment : Fragment() {
     private fun broadcastData() {
         with(binding) {
 
-            //передача фамилии и имени
+            //передача фамилии и имени и почты
 
             val nameText = name.text.toString()
             val surnameText = userName.text.toString()
+            val emailText = Email.text.toString()
 
             val spanableStringName = SpannableString(nameText)
             val spanableStringSurname = SpannableString(surnameText)
+            val spanableStringMail = SpannableString(emailText)
 
             dataModel.name.value = spanableStringName
             dataModel.sername.value = spanableStringSurname
-
-            //передача аватарки пользователя
-
+            dataModel.email.value = spanableStringMail
 
 
         }

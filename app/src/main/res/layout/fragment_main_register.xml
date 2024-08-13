@@ -10,10 +10,10 @@
     <androidx.media3.ui.PlayerView
         android:id="@+id/PlayerFAQ"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_margin="0dp"
-        android:background="@color/white"
-        android:padding="0dp"/>
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black" >
+    </androidx.media3.ui.PlayerView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -74,6 +74,7 @@
 
 
         <View
+            android:id="@+id/view3"
             android:layout_width="1dp"
             android:layout_height="24dp"
             android:layout_marginStart="50dp"
@@ -83,6 +84,7 @@
             app:layout_constraintTop_toTopOf="@+id/number_edit" />
 
         <TextView
+            android:id="@+id/textView46"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -100,11 +102,11 @@
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:theme="@style/MyCheckBox"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="38dp"
             android:scaleX="1.3"
             android:scaleY="1.3"
+            android:theme="@style/MyCheckBox"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/number_edit" />
 

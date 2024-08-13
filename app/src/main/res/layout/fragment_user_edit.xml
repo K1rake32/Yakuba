@@ -81,6 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:paddingBottom="8dp"
         android:text="Изменить фото"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +92,7 @@
         style="@style/numberText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:text="Имя"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +144,7 @@
         app:layout_constraintTop_toBottomOf="@+id/userNameEdit" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/mailEdit"
         style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -163,10 +164,10 @@
         android:layout_marginTop="24dp"
         android:text="Телефон"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/mailEdit" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/inputNumber"
         style="@style/InputText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -185,6 +186,6 @@
         android:text="Удалить профиль"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/inputNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

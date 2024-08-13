@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.example.yakuba.UI.UI.Auth.MainRegisterFragment
 import com.example.yakuba.UI.UI.Main.home.AddPostPhotoFragment
-import com.example.yakuba.UI.UI.Main.home.HomeFragment
+
 import com.example.yakuba.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
